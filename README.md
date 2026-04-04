@@ -1,4 +1,4 @@
-# CLI Order Executor (v1.19.4)
+# CLI Order Executor (v1.19.5)
 
 A console tool for managing perpetual futures orders on Bybit via API.
 
@@ -45,7 +45,7 @@ Make sure you fully understand how this software works and how futures markets o
 
 ## Full Documentation
 
-See the [Full Documentation](https://ivangka.github.io/cli-order-executor) with usage examples.
+See the [Full Documentation](https://heinmer.github.io/cli-order-executor) with usage examples.
 
 ## Risk Management
 
@@ -307,7 +307,7 @@ Follow these steps to get started.
 2. Download or clone this repository:
 
 ```
-git clone https://github.com/ivangka/cli-order-executor.git
+git clone https://github.com/heinmer/cli-order-executor.git
 ```
 
 3. Create a Bybit API Key.

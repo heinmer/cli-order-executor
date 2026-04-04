@@ -29,7 +29,7 @@ public class CliHandler {
 
         System.out.println("\n  ==============================");
         System.out.println("        CLI Order Executor      ");
-        System.out.println("              v1.19.4           ");
+        System.out.println("              v1.19.5           ");
         System.out.println("  ==============================\n");
 
         while (true) {
@@ -391,7 +391,7 @@ public class CliHandler {
             // get documentation link
             case "!help":
                 if (commandParts.length == 1) {
-                    System.out.println("  Usage guide and examples: https://ivangka.github.io/cli-order-executor");
+                    System.out.println("  Usage guide and examples: https://heinmer.github.io/cli-order-executor");
                 } else {
                     throw new InvalidCommandException("Incorrect command format, try again");
                 }

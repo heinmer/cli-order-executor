@@ -5,7 +5,7 @@
 2) Download or clone this repository:
 
 ```
-git clone https://github.com/ivangka/cli-order-executor.git
+git clone https://github.com/heinmer/cli-order-executor.git
 ```
 
 3) Create a Bybit API Key.
