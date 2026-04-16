@@ -1,4 +1,4 @@
-site_name: CLI Order Executor (v1.19.5)
+site_name: CLI Order Executor (v1.19.6)
 theme:
   name: swan
 extra_css:
@@ -21,6 +21,7 @@ nav:
     - Get Conditional Orders: get-conditional-orders.md
     - Get Wallet Balance: get-wallet-balance.md
     - Send Test API Request: send-test-api-request.md
+    - Clear Terminal: clear-terminal.md
     - Get Documentation Link: get-documentation-link.md
     - Exit Program: exit-program.md
   - How to Use?: how-to-use.md

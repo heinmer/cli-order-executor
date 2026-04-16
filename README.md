@@ -1,4 +1,4 @@
-# CLI Order Executor (v1.19.5)
+# CLI Order Executor (v1.19.6)
 
 A console tool for managing perpetual futures orders on Bybit via API.
 
@@ -29,6 +29,7 @@ A console tool for managing perpetual futures orders on Bybit via API.
   * [Get conditional orders](#get-conditional-orders-gc)
   * [Get wallet balance](#get-wallet-balance-bal)
   * [Send test API request](#send-test-api-request-ping)
+  * [Clear terminal](#clear-terminal-clear)
   * [Get documentation link](#get-documentation-link-help)
   * [Exit program](#exit-program-exit)
 * [How to Use?](#how-to-use)
@@ -77,6 +78,7 @@ With this approach, **leverage does not affect your risk** — your risk is fixe
     !bal        get wallet balance
 
     !ping       send test API request
+    !clear      clear terminal
     !help       get documentation link
     !exit       exit program
 
@@ -284,6 +286,12 @@ It shows:
 ### Send test API request `!ping`
 
 Sends a test request to the Bybit API to verify that the connection and credentials are working.
+
+---
+
+### Clear terminal `!clear`
+
+Clears the terminal screen.
 
 ---
 

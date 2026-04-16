@@ -26,11 +26,7 @@ public class CliHandler {
 
     public void start() {
         Scanner scanner = new Scanner(System.in);
-
-        System.out.println("\n  ==============================");
-        System.out.println("        CLI Order Executor      ");
-        System.out.println("              v1.19.5           ");
-        System.out.println("  ==============================\n");
+        printHeader();
 
         while (true) {
             System.out.print("> ");
@@ -47,6 +43,13 @@ public class CliHandler {
                         + e.getClass().getSimpleName()).reset());
             }
         }
+    }
+
+    private void printHeader() {
+        System.out.println("\n  ==============================");
+        System.out.println("        CLI Order Executor      ");
+        System.out.println("              v1.19.6           ");
+        System.out.println("  ==============================\n");
     }
 
     private void executeCommand(String[] commandParts)
@@ -383,6 +386,17 @@ public class CliHandler {
                     orderService.testRequest();
                     System.out.println(ansi().fgBrightGreen()
                             .a("  Connection OK, API credentials are valid").reset());
+                } else {
+                    throw new InvalidCommandException("Incorrect command format, try again");
+                }
+                break;
+
+            // clear the terminal screen
+            case "!clear":
+                if (commandParts.length == 1) {
+                    System.out.print("\u001b[2J\u001b[H");
+                    System.out.flush();
+                    printHeader();
                 } else {
                     throw new InvalidCommandException("Incorrect command format, try again");
                 }
