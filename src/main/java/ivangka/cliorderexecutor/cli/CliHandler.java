@@ -46,10 +46,50 @@ public class CliHandler {
     }
 
     private void printHeader() {
-        System.out.println("\n  ==============================");
-        System.out.println("        CLI Order Executor      ");
-        System.out.println("              v1.19.6           ");
-        System.out.println("  ==============================\n");
+        String title = "CLI Order Executor";
+        String version = "v1.19.7";
+        int width = 30;
+
+        String CYAN_256 = "\u001B[38;5;51m";
+        String RESET = "\u001B[0m";
+
+        String indent = "  ";
+
+        System.out.println();
+
+        // top border
+        System.out.println(indent +
+                ansi().fgBright(org.fusesource.jansi.Ansi.Color.CYAN)
+                        .a("╔" + "═".repeat(width - 2) + "╗")
+                        .reset());
+
+        // title line
+        int titlePadding = width - 4 - title.length();
+        System.out.println(indent +
+                ansi().fgBright(org.fusesource.jansi.Ansi.Color.CYAN).a("║").reset()
+                + "  "
+                + ansi().fgBright(org.fusesource.jansi.Ansi.Color.YELLOW).a(title).reset()
+                + " ".repeat(titlePadding)
+                + ansi().fgBright(org.fusesource.jansi.Ansi.Color.CYAN).a("║").reset());
+
+        // version line
+        int versionPadding = width - 4 - version.length();
+        String versionText = CYAN_256 + version + RESET;
+
+        System.out.println(indent +
+                ansi().fgBright(org.fusesource.jansi.Ansi.Color.CYAN).a("║").reset()
+                + "  "
+                + versionText
+                + " ".repeat(versionPadding)
+                + ansi().fgBright(org.fusesource.jansi.Ansi.Color.CYAN).a("║").reset());
+
+        // bottom border
+        System.out.println(indent +
+                ansi().fgBright(org.fusesource.jansi.Ansi.Color.CYAN)
+                        .a("╚" + "═".repeat(width - 2) + "╝")
+                        .reset());
+
+        System.out.println();
     }
 
     private void executeCommand(String[] commandParts)
