@@ -1,4 +1,4 @@
-site_name: CLI Order Executor (v1.19.7)
+site_name: CLI Order Executor (v1.19.8)
 theme:
   name: swan
 extra_css:
@@ -22,7 +22,7 @@ nav:
     - Get Wallet Balance: get-wallet-balance.md
     - Send Test API Request: send-test-api-request.md
     - Clear Terminal: clear-terminal.md
-    - Get Documentation Link: get-documentation-link.md
+    - Display Help Menu: display-help-menu.md
     - Exit Program: exit-program.md
   - How to Use?: how-to-use.md
   - Error 10002: error-10002.md

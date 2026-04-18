@@ -47,7 +47,7 @@ public class CliHandler {
 
     private void printHeader() {
         String title = "CLI Order Executor";
-        String version = "v1.19.7";
+        String version = "v1.19.8";
         int width = 30;
 
         String CYAN_256 = "\u001B[38;5;51m";
@@ -442,10 +442,65 @@ public class CliHandler {
                 }
                 break;
 
-            // get documentation link
+            // display help menu
             case "!help":
                 if (commandParts.length == 1) {
-                    System.out.println("  Usage guide and examples: https://heinmer.github.io/cli-order-executor");
+                    StringBuilder help = new StringBuilder();
+
+                    help.append("\n");
+                    help.append("  !o [symbol]* [sl]* [tp] [risk]* -l [price] -t [trigger]\n");
+                    help.append(ansi().a(org.fusesource.jansi.Ansi.Attribute.INTENSITY_FAINT).a("  open order by risk").reset()).append("\n");
+                    help.append("\n");
+                    help.append("  !o [symbol]* -buy/sell [qty]* -l [price]\n");
+                    help.append(ansi().a(org.fusesource.jansi.Ansi.Attribute.INTENSITY_FAINT).a("  open order by quantity").reset()).append("\n");
+                    help.append("\n");
+                    help.append("  !x [symbol] [percent]\n");
+                    help.append(ansi().a(org.fusesource.jansi.Ansi.Attribute.INTENSITY_FAINT).a("  close position").reset()).append("\n");
+                    help.append("\n");
+                    help.append("  !cl [symbol]\n");
+                    help.append(ansi().a(org.fusesource.jansi.Ansi.Attribute.INTENSITY_FAINT).a("  cancel limit orders").reset()).append("\n");
+                    help.append("\n");
+                    help.append("  !cc [symbol]\n");
+                    help.append(ansi().a(org.fusesource.jansi.Ansi.Attribute.INTENSITY_FAINT).a("  cancel conditional orders").reset()).append("\n");
+                    help.append("\n");
+                    help.append("  !sl [symbol]* [price]* [percent]\n");
+                    help.append(ansi().a(org.fusesource.jansi.Ansi.Attribute.INTENSITY_FAINT).a("  manage stop-loss").reset()).append("\n");
+                    help.append("\n");
+                    help.append("  !tp [symbol]* [price]* [percent]\n");
+                    help.append(ansi().a(org.fusesource.jansi.Ansi.Attribute.INTENSITY_FAINT).a("  manage take-profit").reset()).append("\n");
+                    help.append("\n");
+                    help.append("  !lev [symbol]* [leverage]\n");
+                    help.append(ansi().a(org.fusesource.jansi.Ansi.Attribute.INTENSITY_FAINT).a("  set leverage").reset()).append("\n");
+                    help.append("\n");
+                    help.append("  !gp [symbol]\n");
+                    help.append(ansi().a(org.fusesource.jansi.Ansi.Attribute.INTENSITY_FAINT).a("  get position info").reset()).append("\n");
+                    help.append("\n");
+                    help.append("  !gl [symbol]\n");
+                    help.append(ansi().a(org.fusesource.jansi.Ansi.Attribute.INTENSITY_FAINT).a("  get limit orders").reset()).append("\n");
+                    help.append("\n");
+                    help.append("  !gc [symbol]\n");
+                    help.append(ansi().a(org.fusesource.jansi.Ansi.Attribute.INTENSITY_FAINT).a("  get conditional orders").reset()).append("\n");
+                    help.append("\n");
+                    help.append("  !bal\n");
+                    help.append(ansi().a(org.fusesource.jansi.Ansi.Attribute.INTENSITY_FAINT).a("  get wallet balance").reset()).append("\n");
+                    help.append("\n");
+                    help.append("  !ping\n");
+                    help.append(ansi().a(org.fusesource.jansi.Ansi.Attribute.INTENSITY_FAINT).a("  send test API request").reset()).append("\n");
+                    help.append("\n");
+                    help.append("  !clear\n");
+                    help.append(ansi().a(org.fusesource.jansi.Ansi.Attribute.INTENSITY_FAINT).a("  clear terminal").reset()).append("\n");
+                    help.append("\n");
+                    help.append("  !help\n");
+                    help.append(ansi().a(org.fusesource.jansi.Ansi.Attribute.INTENSITY_FAINT).a("  display help menu").reset()).append("\n");
+                    help.append("\n");
+                    help.append("  !exit\n");
+                    help.append(ansi().a(org.fusesource.jansi.Ansi.Attribute.INTENSITY_FAINT).a("  exit program").reset()).append("\n");
+                    help.append("\n");
+                    help.append("  * - required parameter\n");
+                    help.append("\n");
+                    help.append("  Docs: https://heinmer.github.io/cli-order-executor\n");
+                    help.append("  Repo: https://github.com/heinmer/cli-order-executor\n");
+                    System.out.println(help);
                 } else {
                     throw new InvalidCommandException("Incorrect command format, try again");
                 }
