@@ -1,4 +1,4 @@
-# CLI Order Executor (v1.19.8)
+# CLI Order Executor (v1.19.9)
 
 A console tool for managing perpetual futures orders on Bybit via API.
 
