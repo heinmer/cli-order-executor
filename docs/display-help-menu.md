@@ -27,4 +27,4 @@ Displays all available commands with links to the docs and repository, or detail
 !help sl
 ```
 
-This command displays the syntax, description and parameters of the `!sl` command. `!help !sl` works the same way.
+This command displays details about the `!sl` command.
