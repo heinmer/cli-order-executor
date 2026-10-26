@@ -461,8 +461,10 @@ public class CliHandler {
 
                     switch (helpCommand) {
                         case "o":
+                            help.append("  I.\n");
+                            help.append("\n");
                             help.append("  !o [symbol]* [sl]* [tp] [risk]* -l [price] -t [trigger]\n");
-                            help.append("  * — required parameter\n");
+                            help.append("  * -required parameter\n");
                             help.append("\n");
                             help.append("  Opens a perpetual futures order with exact order sizing based on a specified\n");
                             help.append("  risk amount, while factoring in trading fees. The leverage used will be the\n");
@@ -471,22 +473,24 @@ public class CliHandler {
                             help.append("  Important: slippage is not considered in the order size calculation.\n");
                             help.append("\n");
                             help.append("  Parameters:\n");
-                            help.append("  - symbol*          — trading pair\n");
-                            help.append("  - sl*              — stop-loss price\n");
-                            help.append("  - tp               — take-profit price\n");
-                            help.append("  - risk*            — amount in USD to risk on the trade\n");
-                            help.append("  - -l [price]       — limit order price\n");
-                            help.append("  - -t [trigger]     — trigger price\n");
+                            help.append("  - symbol*          -trading pair\n");
+                            help.append("  - sl*              -stop-loss price\n");
+                            help.append("  - tp               -take-profit price\n");
+                            help.append("  - risk*            -amount in USD to risk on the trade\n");
+                            help.append("  - -l [price]       -limit order price\n");
+                            help.append("  - -t [trigger]     -trigger price\n");
+                            help.append("\n");
+                            help.append("  II.\n");
                             help.append("\n");
                             help.append("  !o [symbol]* -buy/sell [qty]* -l [price]\n");
-                            help.append("  * — required parameter\n");
+                            help.append("  * -required parameter\n");
                             help.append("\n");
                             help.append("  Opens a perpetual futures order based on a specific quantity of contracts.\n");
                             help.append("\n");
                             help.append("  Parameters:\n");
-                            help.append("  - symbol*          — trading pair\n");
-                            help.append("  - -buy/sell [qty]* — side and quantity of contracts\n");
-                            help.append("  - -l [price]       — limit order price\n");
+                            help.append("  - symbol*          -trading pair\n");
+                            help.append("  - -buy/sell [qty]* -side and quantity of contracts\n");
+                            help.append("  - -l [price]       -limit order price\n");
                             break;
 
                         case "x":
@@ -495,8 +499,8 @@ public class CliHandler {
                             help.append("  Closes an open position for the given trading pair or for all pairs.\n");
                             help.append("\n");
                             help.append("  Parameters:\n");
-                            help.append("  - symbol  — trading pair\n");
-                            help.append("  - percent — percentage of position to close\n");
+                            help.append("  - symbol  -trading pair\n");
+                            help.append("  - percent -percentage of position to close\n");
                             break;
 
                         case "cl":
@@ -505,7 +509,7 @@ public class CliHandler {
                             help.append("  Cancels all limit orders for specified trading pair or for all pairs.\n");
                             help.append("\n");
                             help.append("  Parameters:\n");
-                            help.append("  - symbol — trading pair\n");
+                            help.append("  - symbol -trading pair\n");
                             break;
 
                         case "cc":
@@ -515,43 +519,43 @@ public class CliHandler {
                             help.append("  for specified trading pair or for all pairs.\n");
                             help.append("\n");
                             help.append("  Parameters:\n");
-                            help.append("  - symbol — trading pair\n");
+                            help.append("  - symbol -trading pair\n");
                             break;
 
                         case "sl":
                             help.append("  !sl [symbol]* [price]* [percent]\n");
-                            help.append("  * — required parameter\n");
+                            help.append("  * -required parameter\n");
                             help.append("\n");
                             help.append("  Updates, sets, or removes a stop-loss order for an existing position.\n");
                             help.append("\n");
                             help.append("  Parameters:\n");
-                            help.append("  - symbol*  — trading pair\n");
-                            help.append("  - price*   — stop-loss price (\"0\" to remove a full position SL order)\n");
-                            help.append("  - percent  — percentage of the existing position (for a partial position SL order)\n");
+                            help.append("  - symbol*  -trading pair\n");
+                            help.append("  - price*   -stop-loss price (\"0\" to remove a full position SL order)\n");
+                            help.append("  - percent  -percentage of the existing position (for a partial position SL order)\n");
                             break;
 
                         case "tp":
                             help.append("  !tp [symbol]* [price]* [percent]\n");
-                            help.append("  * — required parameter\n");
+                            help.append("  * -required parameter\n");
                             help.append("\n");
                             help.append("  Updates, sets, or removes a take-profit order for an existing position.\n");
                             help.append("\n");
                             help.append("  Parameters:\n");
-                            help.append("  - symbol*  — trading pair\n");
-                            help.append("  - price*   — take-profit price (\"0\" to remove a full position TP order)\n");
-                            help.append("  - percent  — percentage of the existing position (for a partial position TP order)\n");
+                            help.append("  - symbol*  -trading pair\n");
+                            help.append("  - price*   -take-profit price (\"0\" to remove a full position TP order)\n");
+                            help.append("  - percent  -percentage of the existing position (for a partial position TP order)\n");
                             break;
 
                         case "lev":
                             help.append("  !lev [symbol]* [leverage]\n");
-                            help.append("  * — required parameter\n");
+                            help.append("  * -required parameter\n");
                             help.append("\n");
                             help.append("  Sets leverage for the trading pair. This applies to both existing positions\n");
                             help.append("  and any new orders for this symbol.\n");
                             help.append("\n");
                             help.append("  Parameters:\n");
-                            help.append("  - symbol*  — trading pair\n");
-                            help.append("  - leverage — leverage size\n");
+                            help.append("  - symbol*  -trading pair\n");
+                            help.append("  - leverage -leverage size\n");
                             break;
 
                         case "gp":
@@ -563,7 +567,7 @@ public class CliHandler {
                             help.append("  full position stop-loss and take-profit prices.\n");
                             help.append("\n");
                             help.append("  Parameters:\n");
-                            help.append("  - symbol — trading pair\n");
+                            help.append("  - symbol -trading pair\n");
                             break;
 
                         case "gl":
@@ -575,7 +579,7 @@ public class CliHandler {
                             help.append("  and take-profit prices.\n");
                             help.append("\n");
                             help.append("  Parameters:\n");
-                            help.append("  - symbol — trading pair\n");
+                            help.append("  - symbol -trading pair\n");
                             break;
 
                         case "gc":
@@ -587,7 +591,7 @@ public class CliHandler {
                             help.append("  full position stop-loss and take-profit prices.\n");
                             help.append("\n");
                             help.append("  Parameters:\n");
-                            help.append("  - symbol — trading pair\n");
+                            help.append("  - symbol -trading pair\n");
                             break;
 
                         case "bal":
@@ -596,9 +600,9 @@ public class CliHandler {
                             help.append("  Displays information about your unified trading account balance.\n");
                             help.append("\n");
                             help.append("  It shows:\n");
-                            help.append("  - Wallet Balance    — overall wallet balance (all assets in the account)\n");
-                            help.append("  - Margin Balance    — balance including unrealized PnL and accrued fees\n");
-                            help.append("  - Available Balance — balance available for opening new positions or placing orders\n");
+                            help.append("  - Wallet Balance    -overall wallet balance (all assets in the account)\n");
+                            help.append("  - Margin Balance    -balance including unrealized PnL and accrued fees\n");
+                            help.append("  - Available Balance -balance available for opening new positions or placing orders\n");
                             break;
 
                         case "ping":
@@ -621,7 +625,7 @@ public class CliHandler {
                             help.append("  or details about the specified command.\n");
                             help.append("\n");
                             help.append("  Parameters:\n");
-                            help.append("  - command — command name (with or without \"!\")\n");
+                            help.append("  - command -command name (with or without \"!\")\n");
                             break;
 
                         case "exit":
