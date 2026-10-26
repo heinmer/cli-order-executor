@@ -638,7 +638,6 @@ public class CliHandler {
                             throw new InvalidCommandException("Unknown command, try again");
                     }
 
-
                     System.out.println(help);
                 } else {
                     throw new InvalidCommandException("Incorrect command format, try again");
