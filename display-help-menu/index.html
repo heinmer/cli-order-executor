@@ -21,7 +21,7 @@
     
     
       
-        <title>Display Help Menu - CLI Order Executor (v1.19.9)</title>
+        <title>Display Help Menu - CLI Order Executor (v1.19.10)</title>
       
     
     
@@ -89,6 +89,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#parameters" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -101,7 +106,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="CLI Order Executor (v1.19.9)" class="md-header__button md-logo" aria-label="CLI Order Executor (v1.19.9)" data-md-component="logo">
+    <a href=".." title="CLI Order Executor (v1.19.10)" class="md-header__button md-logo" aria-label="CLI Order Executor (v1.19.10)" data-md-component="logo">
       
   <img src="../images/logo.png" alt="logo">
 
@@ -114,7 +119,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            CLI Order Executor (v1.19.9)
+            CLI Order Executor (v1.19.10)
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -158,12 +163,12 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="CLI Order Executor (v1.19.9)" class="md-nav__button md-logo" aria-label="CLI Order Executor (v1.19.9)" data-md-component="logo">
+    <a href=".." title="CLI Order Executor (v1.19.10)" class="md-nav__button md-logo" aria-label="CLI Order Executor (v1.19.10)" data-md-component="logo">
       
   <img src="../images/logo.png" alt="logo">
 
     </a>
-    CLI Order Executor (v1.19.9)
+    CLI Order Executor (v1.19.10)
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -588,6 +593,19 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Display Help Menu
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -599,6 +617,74 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameters
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#all-variations" class="md-nav__link">
+    <span class="md-ellipsis">
+      All variations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#all-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      All commands
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specific-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specific command
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -697,6 +783,65 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameters
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#all-variations" class="md-nav__link">
+    <span class="md-ellipsis">
+      All variations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#all-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      All commands
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specific-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specific command
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -713,9 +858,29 @@
 
   <h1>Display Help Menu</h1>
 
+<pre><code>!help [command]
+</code></pre>
+<p>Displays all available commands with links to the docs and repository, or details about the specified command.</p>
+<hr />
+<h3 id="parameters">Parameters</h3>
+<ul>
+<li><code>command</code> — command name (with or without <code>!</code>)</li>
+</ul>
+<hr />
+<h3 id="all-variations">All variations</h3>
+<pre><code>!help                     — displays all available commands with links to the docs and repository
+!help [command]           — displays details about the specified command
+</code></pre>
+<hr />
+<h3 id="examples">Examples</h3>
+<h4 id="all-commands">All commands</h4>
 <pre><code>!help
 </code></pre>
-<p>Displays all available commands and provides links to the docs and repository.</p>
+<p>This command displays the list of all available commands.</p>
+<h4 id="specific-command">Specific command</h4>
+<pre><code>!help sl
+</code></pre>
+<p>This command displays the syntax, description and parameters of the <code>!sl</code> command. <code>!help !sl</code> works the same way.</p>
 
 
 
