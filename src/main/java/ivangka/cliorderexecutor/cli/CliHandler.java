@@ -417,8 +417,8 @@ public class CliHandler {
                     StringBuilder help = new StringBuilder();
 
                     help.append("\n");
-                    help.append("  Type !help [command] to see details about a specific command\n");
-                    help.append("  (e.g. !help o or !help !o)\n");
+                    help.append("  Type `!help [command]` to see details about a specific command\n");
+                    help.append("  (e.g. `!help o` or `!help !o`)\n");
                     help.append("\n");
                     help.append("  !o          open order\n");
                     help.append("\n");
