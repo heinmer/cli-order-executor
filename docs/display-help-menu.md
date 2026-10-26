@@ -23,16 +23,6 @@ Displays all available commands with links to the docs and repository, or detail
 
 ### Examples
 
-#### All commands
-
-```
-!help
-```
-
-This command displays the list of all available commands.
-
-#### Specific command
-
 ```
 !help sl
 ```
