@@ -1,4 +1,4 @@
-# CLI Order Executor (v1.19.9)
+# CLI Order Executor (v1.19.10)
 
 A console tool for managing perpetual futures orders on Bybit via API.
 
@@ -297,7 +297,15 @@ Clears the terminal screen.
 
 ### Display help menu `!help`
 
-Displays all available commands and provides links to the docs and repository.
+```
+!help [command]
+```
+
+Displays all available commands with links to the docs and repository, or details about the specified command.
+
+Parameters:
+
+- `command` — command name (with or without `!`)
 
 ---
 

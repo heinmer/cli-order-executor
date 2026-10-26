@@ -47,7 +47,7 @@ public class CliHandler {
 
     private void printHeader() {
         String title = "CLI Order Executor";
-        String version = "v1.19.9";
+        String version = "v1.19.10";
         int width = 30;
         String indent = "  ";
 
@@ -412,63 +412,229 @@ public class CliHandler {
                 break;
 
             // display help menu
-            case "!help":
-                if (commandParts.length == 1) {
+            case "!help": // !help [command]
+                if (commandParts.length == 1) { // all commands
                     StringBuilder help = new StringBuilder();
 
                     help.append("\n");
-                    help.append("  !o [symbol]* [sl]* [tp] [risk]* -l [price] -t [trigger]\n");
-                    help.append(ansi().a(org.fusesource.jansi.Ansi.Attribute.INTENSITY_FAINT).a("  open order by risk").reset()).append("\n");
+                    help.append("  Type !help [command] to see details about a specific command\n");
+                    help.append("  (e.g. !help o or !help !o)\n");
                     help.append("\n");
-                    help.append("  !o [symbol]* -buy/sell [qty]* -l [price]\n");
-                    help.append(ansi().a(org.fusesource.jansi.Ansi.Attribute.INTENSITY_FAINT).a("  open order by quantity").reset()).append("\n");
+                    help.append("  !o          open order\n");
                     help.append("\n");
-                    help.append("  !x [symbol] [percent]\n");
-                    help.append(ansi().a(org.fusesource.jansi.Ansi.Attribute.INTENSITY_FAINT).a("  close position").reset()).append("\n");
+                    help.append("  !x          close position\n");
+                    help.append("  !cl         cancel limit orders\n");
+                    help.append("  !cc         cancel conditional orders\n");
                     help.append("\n");
-                    help.append("  !cl [symbol]\n");
-                    help.append(ansi().a(org.fusesource.jansi.Ansi.Attribute.INTENSITY_FAINT).a("  cancel limit orders").reset()).append("\n");
+                    help.append("  !sl         manage stop-loss\n");
+                    help.append("  !tp         manage take-profit\n");
                     help.append("\n");
-                    help.append("  !cc [symbol]\n");
-                    help.append(ansi().a(org.fusesource.jansi.Ansi.Attribute.INTENSITY_FAINT).a("  cancel conditional orders").reset()).append("\n");
+                    help.append("  !lev        set leverage\n");
                     help.append("\n");
-                    help.append("  !sl [symbol]* [price]* [percent]\n");
-                    help.append(ansi().a(org.fusesource.jansi.Ansi.Attribute.INTENSITY_FAINT).a("  manage stop-loss").reset()).append("\n");
+                    help.append("  !gp         get position info\n");
+                    help.append("  !gl         get limit orders\n");
+                    help.append("  !gc         get conditional orders\n");
                     help.append("\n");
-                    help.append("  !tp [symbol]* [price]* [percent]\n");
-                    help.append(ansi().a(org.fusesource.jansi.Ansi.Attribute.INTENSITY_FAINT).a("  manage take-profit").reset()).append("\n");
+                    help.append("  !bal        get wallet balance\n");
                     help.append("\n");
-                    help.append("  !lev [symbol]* [leverage]\n");
-                    help.append(ansi().a(org.fusesource.jansi.Ansi.Attribute.INTENSITY_FAINT).a("  set leverage").reset()).append("\n");
-                    help.append("\n");
-                    help.append("  !gp [symbol]\n");
-                    help.append(ansi().a(org.fusesource.jansi.Ansi.Attribute.INTENSITY_FAINT).a("  get position info").reset()).append("\n");
-                    help.append("\n");
-                    help.append("  !gl [symbol]\n");
-                    help.append(ansi().a(org.fusesource.jansi.Ansi.Attribute.INTENSITY_FAINT).a("  get limit orders").reset()).append("\n");
-                    help.append("\n");
-                    help.append("  !gc [symbol]\n");
-                    help.append(ansi().a(org.fusesource.jansi.Ansi.Attribute.INTENSITY_FAINT).a("  get conditional orders").reset()).append("\n");
-                    help.append("\n");
-                    help.append("  !bal\n");
-                    help.append(ansi().a(org.fusesource.jansi.Ansi.Attribute.INTENSITY_FAINT).a("  get wallet balance").reset()).append("\n");
-                    help.append("\n");
-                    help.append("  !ping\n");
-                    help.append(ansi().a(org.fusesource.jansi.Ansi.Attribute.INTENSITY_FAINT).a("  send test API request").reset()).append("\n");
-                    help.append("\n");
-                    help.append("  !clear\n");
-                    help.append(ansi().a(org.fusesource.jansi.Ansi.Attribute.INTENSITY_FAINT).a("  clear terminal").reset()).append("\n");
-                    help.append("\n");
-                    help.append("  !help\n");
-                    help.append(ansi().a(org.fusesource.jansi.Ansi.Attribute.INTENSITY_FAINT).a("  display help menu").reset()).append("\n");
-                    help.append("\n");
-                    help.append("  !exit\n");
-                    help.append(ansi().a(org.fusesource.jansi.Ansi.Attribute.INTENSITY_FAINT).a("  exit program").reset()).append("\n");
-                    help.append("\n");
-                    help.append("  * - required parameter\n");
+                    help.append("  !ping       send test API request\n");
+                    help.append("  !clear      clear terminal\n");
+                    help.append("  !help       display help menu\n");
+                    help.append("  !exit       exit program\n");
                     help.append("\n");
                     help.append("  Docs: https://heinmer.github.io/cli-order-executor\n");
                     help.append("  Repo: https://github.com/heinmer/cli-order-executor\n");
+                    System.out.println(help);
+
+                } else if (commandParts.length == 2) { // specific command
+                    // revert symbol formatting applied above (e.g. "SLUSDT" -> "sl")
+                    String helpCommand = commandParts[1].toLowerCase();
+                    if (helpCommand.endsWith("usdt")) {
+                        helpCommand = helpCommand.substring(0, helpCommand.length() - 4);
+                    }
+                    if (helpCommand.startsWith("!")) {
+                        helpCommand = helpCommand.substring(1);
+                    }
+
+                    StringBuilder help = new StringBuilder();
+                    help.append("\n");
+
+                    switch (helpCommand) {
+                        case "o":
+                            help.append("  !o [symbol]* [sl]* [tp] [risk]* -l [price] -t [trigger]\n");
+                            help.append("  * — required parameter\n");
+                            help.append("\n");
+                            help.append("  Opens a perpetual futures order with exact order sizing based on a specified\n");
+                            help.append("  risk amount, while factoring in trading fees. The leverage used will be the\n");
+                            help.append("  default setting for the given trading pair (symbol).\n");
+                            help.append("\n");
+                            help.append("  Important: slippage is not considered in the order size calculation.\n");
+                            help.append("\n");
+                            help.append("  Parameters:\n");
+                            help.append("  - symbol*          — trading pair\n");
+                            help.append("  - sl*              — stop-loss price\n");
+                            help.append("  - tp               — take-profit price\n");
+                            help.append("  - risk*            — amount in USD to risk on the trade\n");
+                            help.append("  - -l [price]       — limit order price\n");
+                            help.append("  - -t [trigger]     — trigger price\n");
+                            help.append("\n");
+                            help.append("  !o [symbol]* -buy/sell [qty]* -l [price]\n");
+                            help.append("  * — required parameter\n");
+                            help.append("\n");
+                            help.append("  Opens a perpetual futures order based on a specific quantity of contracts.\n");
+                            help.append("\n");
+                            help.append("  Parameters:\n");
+                            help.append("  - symbol*          — trading pair\n");
+                            help.append("  - -buy/sell [qty]* — side and quantity of contracts\n");
+                            help.append("  - -l [price]       — limit order price\n");
+                            break;
+
+                        case "x":
+                            help.append("  !x [symbol] [percent]\n");
+                            help.append("\n");
+                            help.append("  Closes an open position for the given trading pair or for all pairs.\n");
+                            help.append("\n");
+                            help.append("  Parameters:\n");
+                            help.append("  - symbol  — trading pair\n");
+                            help.append("  - percent — percentage of position to close\n");
+                            break;
+
+                        case "cl":
+                            help.append("  !cl [symbol]\n");
+                            help.append("\n");
+                            help.append("  Cancels all limit orders for specified trading pair or for all pairs.\n");
+                            help.append("\n");
+                            help.append("  Parameters:\n");
+                            help.append("  - symbol — trading pair\n");
+                            break;
+
+                        case "cc":
+                            help.append("  !cc [symbol]\n");
+                            help.append("\n");
+                            help.append("  Cancels all open conditional orders (including stop-loss and take-profit orders)\n");
+                            help.append("  for specified trading pair or for all pairs.\n");
+                            help.append("\n");
+                            help.append("  Parameters:\n");
+                            help.append("  - symbol — trading pair\n");
+                            break;
+
+                        case "sl":
+                            help.append("  !sl [symbol]* [price]* [percent]\n");
+                            help.append("  * — required parameter\n");
+                            help.append("\n");
+                            help.append("  Updates, sets, or removes a stop-loss order for an existing position.\n");
+                            help.append("\n");
+                            help.append("  Parameters:\n");
+                            help.append("  - symbol*  — trading pair\n");
+                            help.append("  - price*   — stop-loss price (\"0\" to remove a full position SL order)\n");
+                            help.append("  - percent  — percentage of the existing position (for a partial position SL order)\n");
+                            break;
+
+                        case "tp":
+                            help.append("  !tp [symbol]* [price]* [percent]\n");
+                            help.append("  * — required parameter\n");
+                            help.append("\n");
+                            help.append("  Updates, sets, or removes a take-profit order for an existing position.\n");
+                            help.append("\n");
+                            help.append("  Parameters:\n");
+                            help.append("  - symbol*  — trading pair\n");
+                            help.append("  - price*   — take-profit price (\"0\" to remove a full position TP order)\n");
+                            help.append("  - percent  — percentage of the existing position (for a partial position TP order)\n");
+                            break;
+
+                        case "lev":
+                            help.append("  !lev [symbol]* [leverage]\n");
+                            help.append("  * — required parameter\n");
+                            help.append("\n");
+                            help.append("  Sets leverage for the trading pair. This applies to both existing positions\n");
+                            help.append("  and any new orders for this symbol.\n");
+                            help.append("\n");
+                            help.append("  Parameters:\n");
+                            help.append("  - symbol*  — trading pair\n");
+                            help.append("  - leverage — leverage size\n");
+                            break;
+
+                        case "gp":
+                            help.append("  !gp [symbol]\n");
+                            help.append("\n");
+                            help.append("  Displays information about the current positions.\n");
+                            help.append("\n");
+                            help.append("  It shows symbol name, side, size, average entry price, leverage, liquidation price,\n");
+                            help.append("  full position stop-loss and take-profit prices.\n");
+                            help.append("\n");
+                            help.append("  Parameters:\n");
+                            help.append("  - symbol — trading pair\n");
+                            break;
+
+                        case "gl":
+                            help.append("  !gl [symbol]\n");
+                            help.append("\n");
+                            help.append("  Displays information about active limit orders.\n");
+                            help.append("\n");
+                            help.append("  It shows symbol name, price, quantity, side, order type, full position stop-loss\n");
+                            help.append("  and take-profit prices.\n");
+                            help.append("\n");
+                            help.append("  Parameters:\n");
+                            help.append("  - symbol — trading pair\n");
+                            break;
+
+                        case "gc":
+                            help.append("  !gc [symbol]\n");
+                            help.append("\n");
+                            help.append("  Displays information about active conditional orders.\n");
+                            help.append("\n");
+                            help.append("  It shows symbol name, trigger price, price, quantity, side, order type,\n");
+                            help.append("  full position stop-loss and take-profit prices.\n");
+                            help.append("\n");
+                            help.append("  Parameters:\n");
+                            help.append("  - symbol — trading pair\n");
+                            break;
+
+                        case "bal":
+                            help.append("  !bal\n");
+                            help.append("\n");
+                            help.append("  Displays information about your unified trading account balance.\n");
+                            help.append("\n");
+                            help.append("  It shows:\n");
+                            help.append("  - Wallet Balance    — overall wallet balance (all assets in the account)\n");
+                            help.append("  - Margin Balance    — balance including unrealized PnL and accrued fees\n");
+                            help.append("  - Available Balance — balance available for opening new positions or placing orders\n");
+                            break;
+
+                        case "ping":
+                            help.append("  !ping\n");
+                            help.append("\n");
+                            help.append("  Sends a test request to the Bybit API to verify that the connection\n");
+                            help.append("  and credentials are working.\n");
+                            break;
+
+                        case "clear":
+                            help.append("  !clear\n");
+                            help.append("\n");
+                            help.append("  Clears the terminal screen.\n");
+                            break;
+
+                        case "help":
+                            help.append("  !help [command]\n");
+                            help.append("\n");
+                            help.append("  Displays all available commands with links to the docs and repository,\n");
+                            help.append("  or details about the specified command.\n");
+                            help.append("\n");
+                            help.append("  Parameters:\n");
+                            help.append("  - command — command name (with or without \"!\")\n");
+                            break;
+
+                        case "exit":
+                            help.append("  !exit\n");
+                            help.append("\n");
+                            help.append("  Stops the program.\n");
+                            break;
+
+                        default:
+                            throw new InvalidCommandException("Unknown command, try again");
+                    }
+
+
                     System.out.println(help);
                 } else {
                     throw new InvalidCommandException("Incorrect command format, try again");
