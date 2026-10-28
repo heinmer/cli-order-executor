@@ -47,7 +47,7 @@ public class CliHandler {
 
     private void printHeader() {
         String title = "CLI Order Executor";
-        String version = "v1.19.11";
+        String version = "v1.19.12";
         String indent = "  ";
         String[] bars = {
                 "    █ ▄ █     ▄ █ ▄       ▄ █ █ ▄",
@@ -194,7 +194,7 @@ public class CliHandler {
                     System.out.println(ansi().fgBrightGreen().a("  Limit order placed successfully").reset());
 
                 } else {
-                    throw new InvalidCommandException("Incorrect command format, try again");
+                    throw new InvalidCommandException("Incorrect command format. Type `!help [command]` to see the correct usage");
                 }
                 break;
 
@@ -216,7 +216,7 @@ public class CliHandler {
                     }
                     System.out.println(ansi().fgBrightGreen().a("  Positions closed successfully").reset());
                 } else {
-                    throw new InvalidCommandException("Incorrect command format, try again");
+                    throw new InvalidCommandException("Incorrect command format. Type `!help [command]` to see the correct usage");
                 }
                 break;
 
@@ -233,7 +233,7 @@ public class CliHandler {
                     );
                     System.out.println(ansi().fgBrightGreen().a("  Limit orders cancelled successfully").reset());
                 } else {
-                    throw new InvalidCommandException("Incorrect command format, try again");
+                    throw new InvalidCommandException("Incorrect command format. Type `!help [command]` to see the correct usage");
                 }
                 break;
 
@@ -252,7 +252,7 @@ public class CliHandler {
                     System.out.println(ansi().fgBrightGreen().a("  Conditional orders cancelled successfully")
                             .reset());
                 } else {
-                    throw new InvalidCommandException("Incorrect command format, try again");
+                    throw new InvalidCommandException("Incorrect command format. Type `!help [command]` to see the correct usage");
                 }
                 break;
 
@@ -272,7 +272,7 @@ public class CliHandler {
                     );
                     System.out.println(ansi().fgBrightGreen().a("  Stop-loss updated successfully").reset());
                 } else {
-                    throw new InvalidCommandException("Incorrect command format, try again");
+                    throw new InvalidCommandException("Incorrect command format. Type `!help [command]` to see the correct usage");
                 }
                 break;
 
@@ -292,7 +292,7 @@ public class CliHandler {
                     );
                     System.out.println(ansi().fgBrightGreen().a("  Take-profit updated successfully").reset());
                 } else {
-                    throw new InvalidCommandException("Incorrect command format, try again");
+                    throw new InvalidCommandException("Incorrect command format. Type `!help [command]` to see the correct usage");
                 }
                 break;
 
@@ -312,7 +312,7 @@ public class CliHandler {
                     }
                     System.out.println(ansi().fgBrightGreen().a("  Leverage set successfully").reset());
                 } else {
-                    throw new InvalidCommandException("Incorrect command format, try again");
+                    throw new InvalidCommandException("Incorrect command format. Type `!help [command]` to see the correct usage");
                 }
                 break;
 
@@ -334,7 +334,7 @@ public class CliHandler {
                         System.out.println(positionStr);
                     }
                 } else {
-                    throw new InvalidCommandException("Incorrect command format, try again");
+                    throw new InvalidCommandException("Incorrect command format. Type `!help [command]` to see the correct usage");
                 }
                 break;
 
@@ -356,7 +356,7 @@ public class CliHandler {
                         System.out.println(orderStr);
                     }
                 } else {
-                    throw new InvalidCommandException("Incorrect command format, try again");
+                    throw new InvalidCommandException("Incorrect command format. Type `!help [command]` to see the correct usage");
                 }
                 break;
 
@@ -378,7 +378,7 @@ public class CliHandler {
                         System.out.println(orderStr);
                     }
                 } else {
-                    throw new InvalidCommandException("Incorrect command format, try again");
+                    throw new InvalidCommandException("Incorrect command format. Type `!help [command]` to see the correct usage");
                 }
                 break;
 
@@ -388,7 +388,7 @@ public class CliHandler {
                     WalletBalance walletBalance = orderService.getWalletBalance();
                     System.out.println(walletBalance);
                 } else {
-                    throw new InvalidCommandException("Incorrect command format, try again");
+                    throw new InvalidCommandException("Incorrect command format. Type `!help [command]` to see the correct usage");
                 }
                 break;
 
@@ -399,7 +399,7 @@ public class CliHandler {
                     System.out.println(ansi().fgBrightGreen()
                             .a("  Connection OK, API credentials are valid").reset());
                 } else {
-                    throw new InvalidCommandException("Incorrect command format, try again");
+                    throw new InvalidCommandException("Incorrect command format. Type `!help [command]` to see the correct usage");
                 }
                 break;
 
@@ -410,7 +410,7 @@ public class CliHandler {
                     System.out.flush();
                     printHeader();
                 } else {
-                    throw new InvalidCommandException("Incorrect command format, try again");
+                    throw new InvalidCommandException("Incorrect command format. Type `!help [command]` to see the correct usage");
                 }
                 break;
 
@@ -638,12 +638,12 @@ public class CliHandler {
                             break;
 
                         default:
-                            throw new InvalidCommandException("Unknown command, try again");
+                            throw new InvalidCommandException("Unknown command. Type `!help` to see all available commands");
                     }
 
                     System.out.println(help);
                 } else {
-                    throw new InvalidCommandException("Incorrect command format, try again");
+                    throw new InvalidCommandException("Incorrect command format. Type `!help [command]` to see the correct usage");
                 }
                 break;
 
@@ -652,13 +652,13 @@ public class CliHandler {
                 if (commandParts.length == 1) {
                     System.exit(0);
                 } else {
-                    throw new InvalidCommandException("Incorrect command format, try again");
+                    throw new InvalidCommandException("Incorrect command format. Type `!help [command]` to see the correct usage");
                 }
                 break;
 
             // invalid command
             default:
-                throw new InvalidCommandException("Unknown command, try again");
+                throw new InvalidCommandException("Unknown command. Type `!help` to see all available commands");
         }
     }
 

@@ -159,7 +159,7 @@ public class OrderService {
         } else if (side.equals("-sell")) {
             side = "Sell";
         } else {
-            throw new InvalidCommandException("Incorrect command format, try again");
+            throw new InvalidCommandException("Incorrect command format. Type `!help [command]` to see the correct usage");
         }
         apiService.createMarketOrderByQuantity(symbol, side, orderSize);
     }
@@ -173,7 +173,7 @@ public class OrderService {
         } else if (side.equals("-sell")) {
             side = "Sell";
         } else {
-            throw new InvalidCommandException("Incorrect command format, try again");
+            throw new InvalidCommandException("Incorrect command format. Type `!help [command]` to see the correct usage");
         }
         apiService.createLimitOrderByQuantity(symbol, side, orderSize, price);
     }
@@ -199,7 +199,7 @@ public class OrderService {
         try {
             percentBD = new BigDecimal(percent);
         } catch (NumberFormatException e) {
-            throw new InvalidCommandException("Incorrect command format, try again");
+            throw new InvalidCommandException("Incorrect command format. Type `!help [command]` to see the correct usage");
         }
         // 0 < percent <= 100
         if (percentBD.compareTo(BigDecimal.ZERO) <= 0 || percentBD.compareTo(new BigDecimal("100")) > 0) {
@@ -278,7 +278,7 @@ public class OrderService {
         try {
             percentBD = new BigDecimal(percent);
         } catch (NumberFormatException e) {
-            throw new InvalidCommandException("Incorrect command format, try again");
+            throw new InvalidCommandException("Incorrect command format. Type `!help [command]` to see the correct usage");
         }
         // 0 < percent <= 100
         if (percentBD.compareTo(BigDecimal.ZERO) <= 0 || percentBD.compareTo(new BigDecimal("100")) > 0) {
@@ -333,7 +333,7 @@ public class OrderService {
         try {
             percentBD = new BigDecimal(percent);
         } catch (NumberFormatException e) {
-            throw new InvalidCommandException("Incorrect command format, try again");
+            throw new InvalidCommandException("Incorrect command format. Type `!help [command]` to see the correct usage");
         }
         // 0 < percent <= 100
         if (percentBD.compareTo(BigDecimal.ZERO) <= 0 || percentBD.compareTo(new BigDecimal("100")) > 0) {
@@ -439,7 +439,7 @@ public class OrderService {
             stopLossBD = new BigDecimal(stopLoss);
             stepBD = new BigDecimal(step);
         } catch (NumberFormatException e) {
-            throw new InvalidCommandException("Incorrect command format, try again");
+            throw new InvalidCommandException("Incorrect command format. Type `!help [command]` to see the correct usage");
         }
         return riskCalculatorService.calculateOrderSize(riskBD, priceBD, stopLossBD, stepBD, orderType);
     }
