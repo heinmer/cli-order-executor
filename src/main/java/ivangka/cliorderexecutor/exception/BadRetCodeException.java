@@ -9,7 +9,7 @@ public class BadRetCodeException extends Exception {
     static {
         RETCODES.put("10001", "Request parameter error");
         RETCODES.put("10002", "The request time exceeds the time window range");
-        RETCODES.put("10003", "API key is invalid. Check whether the key and domain are matched, " +
+        RETCODES.put("10003", "API key is invalid. Check whether the key and domain are matched,\n  " +
                 "there are 4 env: mainnet, testnet, mainnet-demo, testnet-demo");
         RETCODES.put("10005", "Permission denied, please check your API key permissions");
         RETCODES.put("10007", "User authentication failed");
@@ -21,8 +21,8 @@ public class BadRetCodeException extends Exception {
         RETCODES.put("110018", "User ID is illegal");
         RETCODES.put("110043", "Set leverage has not been modified");
         RETCODES.put("33004", "Your api key has expired");
-        RETCODES.put("34040", "Not modified. Indicates you already set this TP/SL value or you didn't pass " +
-                "a required parameter");
+        RETCODES.put("34040", "Not modified. Indicates you already set this TP/SL value\n  " +
+                        "or you didn't pass a required parameter");
     }
 
     public BadRetCodeException(String message) {
