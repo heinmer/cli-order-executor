@@ -47,17 +47,20 @@ public class CliHandler {
 
     private void printHeader() {
         String title = "CLI Order Executor";
-        String version = "v1.19.10";
-        int width = 30;
+        String version = "v1.19.11";
         String indent = "  ";
+        String[] bars = {
+                "    █ ▄ █     ▄ █ ▄       ▄ █ █ ▄",
+                "▄ █ █ █ █ █ ▄ █ █ █ █ ▄ █ █ █ █ █ ▄"
+        };
+        int width = bars[1].length();
+        int titlePadding = Math.max(1, width - title.length() - version.length());
 
         System.out.println();
-        System.out.println(indent + "╔" + "═".repeat(width - 2) + "╗");
-        int titlePadding = width - 4 - title.length();
-        System.out.println(indent + "║" + "  " + title + " ".repeat(titlePadding) + "║");
-        int versionPadding = width - 4 - version.length();
-        System.out.println(indent + "║" + "  " + version + " ".repeat(versionPadding) + "║");
-        System.out.println(indent + "╚" + "═".repeat(width - 2) + "╝");
+        for (String bar : bars) {
+            System.out.println(indent + bar);
+        }
+        System.out.println(indent + title + " ".repeat(titlePadding) + version);
         System.out.println();
     }
 
